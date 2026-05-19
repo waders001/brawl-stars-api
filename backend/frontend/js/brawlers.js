@@ -1,5 +1,5 @@
 // API Configuration
-const API_URL = 'http://localhost:8000';
+const API_URL = '';
 
 // State
 let currentPage = 1;

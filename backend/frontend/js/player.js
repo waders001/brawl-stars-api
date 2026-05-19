@@ -69,7 +69,7 @@ async function searchPlayer() {
     playerResult.innerHTML = '<div class="loading">🔍 Searching for player...</div>';
     
     try {
-        const response = await fetch(`http://localhost:8000/players/${tag}`);
+        const response = await fetch(`/players/${tag}`);
         
         if (!response.ok) {
             if (response.status === 404) throw new Error('Player not found');
@@ -131,7 +131,7 @@ function displayPlayer(player) {
 
 async function fetchBattleLog(tag) {
     try {
-        const response = await fetch(`http://localhost:8000/players/${tag}/battlelog?limit=5`);
+        const response = await fetch(`/players/${tag}/battlelog?limit=5`);
         if (!response.ok) return;
         const battleLog = await response.json();
         if (battleLog.items && battleLog.items.length > 0) {

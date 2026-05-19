@@ -1,14 +1,13 @@
 ﻿{
-    "builds": [
-        {
-            "src": "backend/app/main.py",
-            "use": "@vercel/python"
-        }
-    ],
-    "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "backend/app/main.py"
-        }
-    ]
+  "functions": {
+    "backend/app/main.py": {
+      "runtime": "python3.12"
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "backend/app/main.py"
+    }
+  ]
 }

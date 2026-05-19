@@ -4,18 +4,21 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from contextlib import asynccontextmanager
 import os
-from .database import db
 from .config import settings
-from .routers import brawlers, players   # ← ADD players
+from .routers import brawlers, players
+
+# Database disabled for Railway deployment (asyncpg removed)
+# from .database import db
 
 # Get absolute path to frontend directory
 FRONTEND_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../frontend"))
 
+# No database lifespan needed
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    await db.connect()
+    # Startup - nothing to connect
     yield
-    await db.disconnect()
+    # Shutdown - nothing to disconnect
 
 app = FastAPI(
     title=settings.api_title,
@@ -39,7 +42,7 @@ app.mount("/js", StaticFiles(directory=os.path.join(FRONTEND_DIR, "js")), name="
 
 # Include routers
 app.include_router(brawlers.router)
-app.include_router(players.router)   # ← ADD this line
+app.include_router(players.router)
 
 @app.get("/api")
 async def api_root():

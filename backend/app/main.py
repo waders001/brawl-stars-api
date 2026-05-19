@@ -11,7 +11,7 @@ from .routers import brawlers, players
 # from .database import db
 
 # Get absolute path to frontend directory
-FRONTEND_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../frontend"))
+FRONTEND_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../frontend"))
 
 # No database lifespan needed
 @asynccontextmanager

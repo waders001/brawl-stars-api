@@ -26,11 +26,8 @@ function parseBrawlStarsDate(dateStr) {
 // Format mode name: "hotZone" -> "Hot Zone", "heist" -> "Heist"
 function formatModeName(mode) {
     if (!mode) return 'Unknown';
-    // Handle camelCase (e.g., hotZone, gemGrab, bounty)
     let formatted = mode.replace(/([A-Z])/g, ' $1').trim();
-    // Capitalize first letter of each word
     formatted = formatted.replace(/\b\w/g, c => c.toUpperCase());
-    // Special cases
     const special = {
         'Hot Zone': 'Hot Zone',
         'Gem Grab': 'Gem Grab',
@@ -95,10 +92,18 @@ async function searchPlayer() {
 
 function displayPlayer(player) {
     const playerName = player.name || 'Unknown';
+    
     const clubInfo = (player.club && player.club.name) ? 
         `<p><strong>🏠 Club:</strong> ${player.club.name} (${player.club.tag || '??'})</p>` : 
         '<p><strong>🏠 Club:</strong> No club</p>';
+    
     const cleanTag = player.tag ? '#' + player.tag.replace('#', '') : 'N/A';
+    
+    // Additional stats
+    const totalWins = (player['3vs3Victories'] || 0) + (player.soloVictories || 0) + (player.duoVictories || 0);
+    const totalPrestige = player.totalPrestigeLevel || 0;
+    const rankedElo = player.rankedElo || 0;
+    const highestRankedElo = player.highestAllTimeRankedElo || 0;
     
     playerResult.innerHTML = `
         <div class="player-card">
@@ -112,6 +117,12 @@ function displayPlayer(player) {
                 <div class="stat"><span class="stat-label">🎮 3v3 Wins:</span><span class="stat-value">${player['3vs3Victories']?.toLocaleString() || 0}</span></div>
                 <div class="stat"><span class="stat-label">👤 Solo Wins:</span><span class="stat-value">${player.soloVictories?.toLocaleString() || 0}</span></div>
                 <div class="stat"><span class="stat-label">👥 Duo Wins:</span><span class="stat-value">${player.duoVictories?.toLocaleString() || 0}</span></div>
+            </div>
+            <div class="player-stats-grid">
+                <div class="stat"><span class="stat-label">🏅 Total Wins:</span><span class="stat-value">${totalWins.toLocaleString()}</span></div>
+                <div class="stat"><span class="stat-label">✨ Total Prestige:</span><span class="stat-value">${totalPrestige.toLocaleString()}</span></div>
+                <div class="stat"><span class="stat-label">🎯 Ranked Elo:</span><span class="stat-value">${rankedElo.toLocaleString()}</span></div>
+                <div class="stat"><span class="stat-label">🏆 Highest Ranked Elo:</span><span class="stat-value">${highestRankedElo.toLocaleString()}</span></div>
             </div>
             <div style="margin-top:20px;"><p><strong>🤺 Brawlers Unlocked:</strong> ${player.brawlers?.length || 0}</p></div>
         </div>

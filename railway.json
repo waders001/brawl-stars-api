@@ -1,6 +1,7 @@
 {
   "build": {
     "builder": "NIXPACKS",
+    "context": "backend",
     "nixpacksConfig": {
       "pythonVersion": "3.12"
     }

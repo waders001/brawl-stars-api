@@ -5,8 +5,9 @@ from ..config import settings
 
 router = APIRouter(prefix="/brawlers", tags=["brawlers"])
 
-BRAWL_STARS_API_URL = "https://api.brawlstars.com/v1"
+BRAWL_STARS_API_URL = "https://bsproxy.royaleapi.dev/v1"
 API_KEY = settings.brawl_stars_api_key
+print(f"DEBUG: API_KEY loaded = {'YES' if API_KEY else 'NO'}")
 
 # Helper to fetch all brawlers from API (with caching optional)
 async def fetch_all_brawlers() -> List[Dict[str, Any]]:

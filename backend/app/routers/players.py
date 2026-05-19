@@ -4,8 +4,9 @@ from ..config import settings
 
 router = APIRouter(prefix="/players", tags=["players"])
 
-BRAWL_STARS_API_URL = "https://api.brawlstars.com/v1"
+BRAWL_STARS_API_URL = "https://bsproxy.royaleapi.dev/v1"
 API_KEY = settings.brawl_stars_api_key
+print(f"DEBUG: API_KEY loaded = {'YES' if API_KEY else 'NO'}")
 
 @router.get("/{player_tag}")
 async def get_player(player_tag: str):

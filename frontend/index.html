@@ -3,70 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brawl Stars Brawlers</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>BrawlHub - Brawl Stars Stats & Analytics</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/home.css">
 </head>
 <body>
+    <nav class="main-nav">
+        <a href="/" class="nav-logo">🏆 BrawlHub</a>
+        <div class="nav-links">
+            <a href="/" class="active">Home</a>
+            <a href="/brawlers.html">Brawlers</a>
+            <a href="/player.html">Player Search</a>
+            <a href="/rankings.html">Rankings</a>
+        </div>
+    </nav>
+
     <div class="container">
-        <header>
-            <h1>🏆 Brawl Stars Brawlers 🏆</h1>
-            <p>Complete database of all 104 brawlers with verified stats</p>
-        </header>
+        <div class="hero">
+            <h1>Welcome to BrawlHub</h1>
+            <p>The most accurate Brawl Stars analytics. Track brawlers, search players, and climb leaderboards.</p>
+        </div>
 
-        <div class="controls">
-            <div class="search-box">
-                <input type="text" id="searchInput" placeholder="Search by name (e.g., 'el', 'spike', 'crow')..." class="search-input">
-                <button id="searchBtn" class="btn btn-primary">🔍 Search</button>
-                <button id="resetBtn" class="btn btn-secondary">Reset</button>
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">🤺</div>
+                <h3>Brawlers Database</h3>
+                <p>Complete stats for all brawlers with search and filters.</p>
+                <a href="/brawlers.html" class="btn btn-primary" style="margin-top: 15px; display: inline-block;">Explore Brawlers →</a>
             </div>
-            <div id="searchHint" class="search-hint"></div>
-            
-            <div class="filters">
-                <select id="classFilter" class="filter-select">
-                    <option value="">All Classes</option>
-                    <option value="Assassin">Assassin</option>
-                    <option value="Artillery">Artillery</option>
-                    <option value="Controller">Controller</option>
-                    <option value="Damage Dealer">Damage Dealer</option>
-                    <option value="Marksman">Marksman</option>
-                    <option value="Support">Support</option>
-                    <option value="Tank">Tank</option>
-                </select>
-                
-                <select id="rarityFilter" class="filter-select">
-                    <option value="">All Rarities (102 Brawlers)</option>
-                    <option value="Starting Brawler">Starting Brawler (~10)</option>
-                    <option value="Common">Common (1)</option>
-                    <option value="Rare">Rare (8)</option>
-                    <option value="Super Rare">Super Rare (10)</option>
-                    <option value="Epic">Epic (29)</option>
-                    <option value="Mythic">Mythic (39)</option>
-                    <option value="Legendary">Legendary (13)</option>
-                    <option value="Ultra-Legendary">Ultra-Legendary (2)</option>
-                    <option value="Trophy Road">Trophy Road</option>
-                </select>
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>Player Search</h3>
+                <p>Look up any player by tag and see their stats, brawlers, and battle log.</p>
+                <a href="/player.html" class="btn btn-primary" style="margin-top: 15px; display: inline-block;">Search Players →</a>
             </div>
-        </div>
-
-        <div class="stats-bar">
-            <span id="brawlerCount">Loading...</span>
-        </div>
-
-        <div id="brawlersGrid" class="brawlers-grid">
-            <div class="loading">Loading brawlers...</div>
-        </div>
-
-        <div class="pagination">
-            <button id="prevBtn" class="btn btn-secondary" disabled>◀ Previous</button>
-            <span id="pageInfo">Page 1</span>
-            <button id="nextBtn" class="btn btn-secondary">Next ▶</button>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Rankings</h3>
+                <p>Global and regional leaderboards for players and clubs.</p>
+                <a href="/rankings.html" class="btn btn-primary" style="margin-top: 15px; display: inline-block;">View Rankings →</a>
+            </div>
         </div>
     </div>
 
     <footer>
-        <p>Data verified from Brawl Time Ninja (May 2026) | API by Brawl Stars API</p>
+        <p>Data from Brawl Stars API | BrawlHub - Your Brawl Stars Companion</p>
     </footer>
-
-    <script src="js/app.js"></script>
 </body>
 </html>

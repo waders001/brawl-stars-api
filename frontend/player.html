@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Search - BrawlHub</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/player.css">
+</head>
+<body>
+    <nav class="main-nav">
+        <a href="/" class="nav-logo">🏆 BrawlHub</a>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/brawlers.html">Brawlers</a>
+            <a href="/player.html" class="active">Player Search</a>
+            <a href="/rankings.html">Rankings</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="player-search-container">
+            <h1>Player Search</h1>
+            <p>Enter a player tag to view stats and battle history</p>
+            
+            <div class="player-search-box">
+                <input type="text" id="playerTag" placeholder="Player tag (e.g., #2PPU9VUR)" class="player-search-input">
+                <button id="searchPlayerBtn" class="btn btn-primary">Search</button>
+            </div>
+            
+            <div id="playerResult"></div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Data from Brawl Stars API | BrawlHub - Your Brawl Stars Companion</p>
+    </footer>
+
+    <script src="js/player.js"></script>
+</body>
+</html>

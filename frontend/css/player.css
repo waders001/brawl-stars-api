@@ -49,3 +49,16 @@
     gap: 15px;
     margin: 20px 0;
 }
+.stat {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.stat-label {
+    color: #aaa;
+}
+.stat-value {
+    font-weight: 600;
+    color: #ffd700;
+}

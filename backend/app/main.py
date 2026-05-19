@@ -6,17 +6,15 @@ from contextlib import asynccontextmanager
 import os
 from .database import db
 from .config import settings
-from .routers import brawlers
+from .routers import brawlers, players   # ← ADD players
 
-# Get absolute path to frontend directory (adjusts to your project structure)
+# Get absolute path to frontend directory
 FRONTEND_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../frontend"))
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    # Startup
     await db.connect()
     yield
-    # Shutdown
     await db.disconnect()
 
 app = FastAPI(
@@ -41,8 +39,8 @@ app.mount("/js", StaticFiles(directory=os.path.join(FRONTEND_DIR, "js")), name="
 
 # Include routers
 app.include_router(brawlers.router)
+app.include_router(players.router)   # ← ADD this line
 
-# API endpoints (keep these at /api or separate)
 @app.get("/api")
 async def api_root():
     return {
@@ -55,7 +53,9 @@ async def api_root():
             "brawlers_by_class": "/brawlers/class/{class_name}",
             "brawlers_by_rarity": "/brawlers/rarity/{rarity}",
             "legendary_stats": "/brawlers/stats/legendary",
-            "search": "/brawlers/search/?q={query}"
+            "search": "/brawlers/search/?q={query}",
+            "players": "/players/{player_tag}",
+            "battlelog": "/players/{player_tag}/battlelog"
         }
     }
 
@@ -63,7 +63,7 @@ async def api_root():
 async def health_check():
     return {"status": "healthy"}
 
-# Serve frontend HTML pages (now your site works!)
+# Serve frontend HTML pages
 @app.get("/")
 async def serve_home():
     return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
